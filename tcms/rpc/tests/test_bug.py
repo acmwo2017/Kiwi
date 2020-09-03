@@ -1,6 +1,13 @@
+import unittest
+
+from django.conf import settings
 from django.core.cache import cache
 
 from tcms.rpc.tests.utils import APITestCase
+
+if 'tcms.bugs.apps.AppConfig' not in settings.INSTALLED_APPS:
+    raise unittest.SkipTest('tcms.bugs is disabled')
+
 
 class TestBug(APITestCase):
 
